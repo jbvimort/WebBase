@@ -1,0 +1,58 @@
+{
+	"host": "localhost",
+	"port": 8180,
+	"plugins": {
+		"vision": {},
+		"inert": {},
+		"lout": {},
+		"h2o2": {},
+		"tls" : {
+			"key": "/path/to/key.pem",
+			"cert": "/path/to/certificate.pem"
+		},
+		"hapi-auth-jwt": {},
+		"clusterpost-auth": {
+			"privateKey": "SomeRandomKey",
+			"saltRounds": 10,
+			"algorithm": { 
+				"algorithm": "HS256"
+			},
+			"algorithms": { 
+				"algorithms": [ "HS256" ] 
+			},
+			"mailer": {
+				"nodemailer": {
+					"host": "smtp.gmail.com",
+				    "secure": false,
+				    "port": 587,
+				    "auth": {
+				        "user": "uname",
+				        "pass": "pass"
+				    }
+				},
+				"from": "Clusterpost <clusterpost@gmail.com>"
+			}
+		},
+		"clusterpost-provider": {
+			"default" : {
+				"dataprovider" : "clusterjobs"
+			},
+			"dataproviders" : {
+				"clusterjobs" : {
+					"hostname": "http://localhost:5984",
+					"database": "clusterjobs",
+					"username": "",
+					"password": ""
+				}
+			},
+			"executionservers" : {
+				"testserver" : {
+					"hostname" : "localhost", 
+					"user" : "prieto",
+					"identityfile" : "~/.ssh/idfile",
+					"sourcedir" : "./executionserver"			
+				}
+			}
+		}
+	}
+}
